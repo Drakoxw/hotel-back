@@ -1,13 +1,15 @@
 package main
 
 import (
+	"hotel-backend/database"
+	"hotel-backend/routes"
 	"hotel-backend/utils"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// database.Connect()
+	database.Connect()
 
 	// // Migraciones
 	// database.DB.AutoMigrate(
@@ -32,6 +34,7 @@ func main() {
 	// routes.RegisterHotelRoutes(r)       // Rutas de hoteles
 	// routes.RegisterRoomRoutes(r)        // Rutas de habitaciones
 	// routes.RegisterReservationRoutes(r) // Rutas reservas
+	routes.RegisterEmailsRoutes(r) // Rutas para email
 
 	port := utils.GetPort()
 	r.Run(port)
